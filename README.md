@@ -13,4 +13,11 @@ Contents
 This repository is forked from [vim-snippets], and would like to add C++ snippets for personal usage.
 The snippets will include class/template/design-patterns snippets in general.
 
+Snippets
+--------
+* Create a class with value semantics:
+    clv
+* Create a Abstract Factory pattern:
+    patAF
+
 [vim-snippts]:        https://github.com/honza/vim-snippets.vim

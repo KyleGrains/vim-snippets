@@ -190,12 +190,57 @@ class ${1:`!p snip.rv = snip.basename or "ClassName"`}
 {
 public:
 	${1/(\w+).*/$1/}()${2: = default};
-	~${1/(\w+).*/$1/}()${3: = default};
-	${1/(\w+).*/$1/}(const ${1/(\w+).*/$1/}& ${4:rhs});
-	const ${1/(\w+).*/$1/}& operator=(const ${1/(\w+).*/$1/}& ${5:rhs});
+	~${1/(\w+).*/$1/}()$2;
+	${1/(\w+).*/$1/}(const ${1/(\w+).*/$1/}& ${4:rhs})$2;
+	const ${1/(\w+).*/$1/}& operator=(const ${1/(\w+).*/$1/}& ${5:rhs})$2;
 
 private:
 	${0:/* data */}
 };
+endsnippet
+
+snippet	patAF "Abstract FActory Pattern" b
+class ${1:AbstractFactory}
+{
+public:
+	class ${2:AbstractProduct};
+  $2* createProduct()${3: = 0};
+	${1/(\w+).*/$1/}()${4: = default};
+	~${1/(\w+).*/$1/}()$4;
+
+private:
+	${1/(\w+).*/$1/}(const ${1/(\w+).*/$1/}&) = delete;
+	const ${1/(\w+).*/$1/}& operator=(const ${1/(\w+).*/$1/}&) = delete;
+};
+
+class ${6:ConcreteFactory}: public $1
+{
+public:
+	class	${7:ConcreteProduct};
+  $7* createProduct();
+	${6/(\w+).*/$1/}()${8: = default};
+	~${6/(\w+).*/$1/}()$8;
+};
+
+class $2
+{
+public:
+	${2/(\w+).*/$1/}()${10: = default};
+	~${2/(\w+).*/$1/}()$10;
+
+	${2/(\w+).*/$1/}(const ${2/(\w+).*/$1/}& ${11:rhs})$10;
+	const ${2/(\w+).*/$1/}& operator=(const ${2/(\w+).*/$1/}& ${12:rhs})$10;
+}
+
+class $7: public $2
+{
+public:
+	${7/(\w+).*/$1/}()${14: = default};
+	~${7/(\w+).*/$1/}()$14;
+
+	${7/(\w+).*/$1/}(const ${7/(\w+).*/$1/}& ${15:rhs})$14;
+	const ${7/(\w+).*/$1/}& operator=(const ${7/(\w+).*/$1/}& ${16:rhs})$14;
+}
+
 endsnippet
 # vim:ft=snippets:
